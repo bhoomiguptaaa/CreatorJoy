@@ -207,7 +207,7 @@ export default function Home() {
     <>
       <LoadingOverlay visible={ingesting} />
 
-      <div className="min-h-screen bg-[var(--bg)] flex flex-col">
+      <div className="min-h-screen bg-[#F5F5F7] dark:bg-[#0a0a0f] text-gray-900 dark:text-[#F9FAFB] flex flex-col transition-colors duration-200">
         {/* Top Navbar */}
         <Navbar
           onNewAnalysis={handleNewAnalysis}
@@ -218,11 +218,11 @@ export default function Home() {
         <main className="flex-1 flex flex-col md:flex-row gap-0 overflow-hidden">
           
           {/* Left Column (Video Inputs + Comparison Metrics) */}
-          <aside className="w-full md:w-[28%] md:min-w-[340px] md:max-w-[440px] flex-shrink-0 border-r border-[var(--border)] flex flex-col p-5 gap-4 overflow-y-auto bg-[#0a0a0f] justify-between h-auto md:h-[calc(100vh-3.5rem)]">
+          <aside className="w-full md:w-[28%] md:min-w-[340px] md:max-w-[440px] flex-shrink-0 border-r border-gray-200 dark:border-white/8 flex flex-col p-5 gap-4 overflow-y-auto bg-[#EEEEEF] dark:bg-[#0D0D14] justify-between h-auto md:h-[calc(100vh-3.5rem)] transition-colors duration-200">
             <div className="space-y-4">
               {/* Header Label */}
               <div>
-                <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--text-muted)] font-mono">
+                <div className="text-[10px] font-bold uppercase tracking-widest text-gray-500 dark:text-[#6B7280] font-mono">
                   VIDEO INPUTS
                 </div>
               </div>
@@ -285,9 +285,9 @@ export default function Home() {
           </aside>
 
           {/* Right Column (Empty State OR Active Chat Panel) */}
-          <section className="flex-1 flex flex-col p-5 bg-[#0d0d14]/40 h-auto md:h-[calc(100vh-3.5rem)]">
+          <section className="flex-1 flex flex-col p-5 bg-white dark:bg-[#0A0A0F] h-auto md:h-[calc(100vh-3.5rem)] transition-colors duration-200">
             {!hasVideos ? (
-              <div className="flex-1 flex flex-col items-center justify-center border border-[var(--border)] border-dashed rounded-xl p-8 bg-[var(--surface)]/30">
+              <div className="flex-1 flex flex-col items-center justify-center border border-gray-200 dark:border-white/5 border-dashed rounded-xl p-8 bg-white dark:bg-[#12121c]/30">
                 <EmptyState />
               </div>
             ) : (

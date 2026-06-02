@@ -12,23 +12,23 @@ export function EmptyState() {
 
       {/* Heading & Subtitle */}
       <div className="space-y-2">
-        <h3 className="text-lg font-semibold text-white tracking-wide">
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-white tracking-wide">
           Drop two videos. Ask anything.
         </h3>
-        <p className="text-sm text-white/60 max-w-[280px] mx-auto leading-relaxed">
+        <p className="text-sm text-gray-600 dark:text-white/60 max-w-[280px] mx-auto leading-relaxed">
           Hooks, engagement, improvements — all in one chat.
         </p>
       </div>
 
       {/* Example Chips */}
       <div className="flex flex-wrap items-center justify-center gap-2 mt-4 max-w-md">
-        <div className="border border-white/10 bg-white/[0.02] rounded-full px-4 py-1.5 text-xs text-white/40 transition-colors duration-150">
+        <div className="border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/[0.02] rounded-full px-4 py-1.5 text-xs text-gray-500 dark:text-white/40 transition-colors duration-150">
           Why did Video A outperform?
         </div>
-        <div className="border border-white/10 bg-white/[0.02] rounded-full px-4 py-1.5 text-xs text-white/40 transition-colors duration-150">
+        <div className="border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/[0.02] rounded-full px-4 py-1.5 text-xs text-gray-500 dark:text-white/40 transition-colors duration-150">
           Compare the hooks
         </div>
-        <div className="border border-white/10 bg-white/[0.02] rounded-full px-4 py-1.5 text-xs text-white/40 transition-colors duration-150">
+        <div className="border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/[0.02] rounded-full px-4 py-1.5 text-xs text-gray-500 dark:text-white/40 transition-colors duration-150">
           What should I fix?
         </div>
       </div>

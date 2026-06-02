@@ -81,23 +81,23 @@ export function LoadingOverlay({ visible }: Props) {
   const step = STEPS[current.stepIndex];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#0a0a0f]/95 backdrop-blur-xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/95 dark:bg-[#0a0a0f]/95 backdrop-blur-xl transition-colors duration-200">
       <div className="flex flex-col items-center gap-8 px-8 max-w-md w-full">
 
         {/* Animated spinner with purple ring and lightning bolt */}
         <div className="relative w-16 h-16 flex items-center justify-center">
-          <div className="absolute inset-0 rounded-full border-2 border-white/5" />
+          <div className="absolute inset-0 rounded-full border-2 border-gray-200 dark:border-white/5" />
           <div className="absolute inset-0 rounded-full border-2 border-transparent border-t-[#7C3AED] animate-spin" />
           <span className="text-2xl select-none">⚡</span>
         </div>
 
         {/* Step label + message */}
         <div className="text-center space-y-2 select-none">
-          <div className="text-xs font-semibold uppercase tracking-widest text-white font-mono">
+          <div className="text-xs font-semibold uppercase tracking-widest text-gray-850 dark:text-white font-mono">
             {step.label}
           </div>
           <div
-            className="text-xs text-white/50 min-h-[1.25rem] transition-opacity duration-200"
+            className="text-xs text-gray-500 dark:text-white/50 min-h-[1.25rem] transition-opacity duration-200"
             style={{ opacity: fade ? 1 : 0 }}
           >
             {current.msg}
@@ -118,7 +118,7 @@ export function LoadingOverlay({ visible }: Props) {
                       ? "#7C3AED"
                       : i === current.stepIndex
                       ? "#7C3AED"
-                      : "rgba(255,255,255,0.1)",
+                      : "var(--progress-inactive)",
                   opacity: i > current.stepIndex ? 0.3 : 1,
                 }}
               />
@@ -127,7 +127,7 @@ export function LoadingOverlay({ visible }: Props) {
                   className="w-3 h-[1px] transition-all duration-500"
                   style={{
                     background:
-                      i < current.stepIndex ? "#7C3AED" : "rgba(255,255,255,0.1)",
+                      i < current.stepIndex ? "#7C3AED" : "var(--progress-inactive)",
                     opacity: i < current.stepIndex ? 1 : 0.3,
                   }}
                 />
@@ -137,7 +137,7 @@ export function LoadingOverlay({ visible }: Props) {
         </div>
 
         {/* Pro Tip */}
-        <div className="text-xs text-white/70 bg-[#13131F]/90 border border-white/5 border-l-4 border-l-amber-500 rounded-xl px-4 py-3.5 max-w-sm shadow-xl shadow-black/40 flex items-start gap-3">
+        <div className="text-xs text-gray-600 dark:text-white/70 bg-white dark:bg-[#13131F]/90 border border-gray-200 dark:border-white/5 border-l-4 border-l-amber-500 rounded-xl px-4 py-3.5 max-w-sm shadow-md dark:shadow-xl shadow-black/5 dark:shadow-black/40 flex items-start gap-3 transition-colors duration-200">
           <span className="text-sm select-none">💡</span>
           <div className="text-left">
             <span className="font-bold font-mono uppercase text-[9px] tracking-widest text-amber-500 block mb-0.5">Pro tip</span>

@@ -111,7 +111,7 @@ export function ChatPanel({
         return <span key={index}>{part.content}</span>;
       }
 
-      const colorClass = "bg-purple-950/40 text-purple-300 border-purple-800/30 hover:bg-purple-900/40 hover:text-purple-200 transition-colors duration-150";
+      const colorClass = "bg-purple-50 dark:bg-purple-950/40 text-purple-600 dark:text-purple-300 border-purple-200 dark:border-purple-800/30 hover:bg-purple-100 dark:hover:bg-purple-900/40 hover:text-purple-700 dark:hover:text-purple-200 transition-colors duration-150";
 
       return (
         <button
@@ -132,11 +132,11 @@ export function ChatPanel({
   ];
 
   return (
-    <div className="flex flex-col h-full bg-[#13131F]/40 backdrop-blur-md border border-white/5 rounded-2xl overflow-hidden">
+    <div className="flex flex-col h-full bg-white dark:bg-[#13131F]/40 backdrop-blur-md border border-gray-200 dark:border-white/5 rounded-2xl overflow-hidden shadow-sm dark:shadow-none transition-colors duration-200">
       {/* Header bar */}
-      <div className="px-4 py-4 border-b border-white/5 flex items-center justify-between select-none">
+      <div className="px-4 py-4 border-b border-gray-200 dark:border-white/5 flex items-center justify-between select-none">
         <div className="flex items-center gap-2">
-          <span className="text-sm font-medium text-white/90">
+          <span className="text-sm font-medium text-gray-900 dark:text-white/90">
             AI Analysis Chat
           </span>
           <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
@@ -144,7 +144,7 @@ export function ChatPanel({
         <button
           onClick={onClear}
           disabled={messages.length === 0}
-          className="text-xs text-white/40 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer transition-colors duration-150 rounded px-1.5 py-0.5 focus-visible:ring-2 focus-visible:ring-purple-500/50 focus-visible:outline-none"
+          className="text-xs text-gray-400 hover:text-gray-900 dark:text-white/40 dark:hover:text-white disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer transition-colors duration-150 rounded px-1.5 py-0.5 focus-visible:ring-2 focus-visible:ring-purple-500/50 focus-visible:outline-none"
         >
           Clear Chat
         </button>
@@ -153,7 +153,7 @@ export function ChatPanel({
       {/* Messages area */}
       <div
         ref={scrollRef}
-        className="flex-1 overflow-y-auto px-4 py-4 flex flex-col gap-4 scrollbar-thin scrollbar-thumb-[var(--border)] scrollbar-track-transparent"
+        className="flex-1 overflow-y-auto px-4 py-4 flex flex-col gap-4 scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-white/10 scrollbar-track-transparent"
       >
         {messages.length === 0 && !loading && (
           <div className="flex-1 flex flex-col items-center justify-center text-center p-8 select-none gap-3">
@@ -161,10 +161,10 @@ export function ChatPanel({
               ✦
             </span>
             <div>
-              <p className="text-sm text-white font-medium mb-1">
+              <p className="text-sm text-gray-900 dark:text-white font-medium mb-1">
                 Start your analysis
               </p>
-              <p className="text-xs text-white/50 max-w-[250px] leading-relaxed">
+              <p className="text-xs text-gray-500 dark:text-white/50 max-w-[250px] leading-relaxed">
                 Ask questions about views, retention hooks, or comparison metrics.
               </p>
             </div>
@@ -182,7 +182,7 @@ export function ChatPanel({
                 className={
                   isUser
                     ? "ml-auto max-w-[80%] bg-[#7C3AED] text-white rounded-2xl rounded-tr-sm px-4 py-2.5 text-sm shadow-lg shadow-purple-900/10"
-                    : "mr-auto max-w-[90%] bg-[#13131F] border border-white/5 rounded-2xl rounded-tl-sm px-4 py-3 text-sm text-white/90 leading-relaxed"
+                    : "mr-auto max-w-[90%] bg-gray-100 dark:bg-[#13131F] border border-gray-200 dark:border-white/5 rounded-2xl rounded-tl-sm px-4 py-3 text-sm text-gray-900 dark:text-white/90 leading-relaxed"
                 }
               >
                 {isUser ? (
@@ -193,7 +193,7 @@ export function ChatPanel({
                   </div>
                 )}
               </div>
-              <span className="text-[10px] font-mono text-[var(--text-muted)] mt-1 select-none px-1">
+              <span className="text-[10px] font-mono text-gray-400 dark:text-[#6B7280] mt-1 select-none px-1">
                 {msg.timestamp}
               </span>
             </div>
@@ -203,21 +203,21 @@ export function ChatPanel({
         {/* Typing indicator */}
         {loading && (
           <div className="flex flex-col items-start">
-            <div className="flex gap-1 items-center mr-auto max-w-[90%] bg-[var(--surface-raised)] border border-[var(--border)] rounded-2xl rounded-tl-sm px-4 py-3">
+            <div className="flex gap-1 items-center mr-auto max-w-[90%] bg-gray-100 dark:bg-[#181826] border border-gray-200 dark:border-white/5 rounded-2xl rounded-tl-sm px-4 py-3">
               <span
-                className="w-1.5 h-1.5 rounded-full bg-[var(--text-muted)] animate-bounce"
+                className="w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-[#444444] animate-bounce"
                 style={{ animationDelay: "0ms" }}
               />
               <span
-                className="w-1.5 h-1.5 rounded-full bg-[var(--text-muted)] animate-bounce"
+                className="w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-[#444444] animate-bounce"
                 style={{ animationDelay: "150ms" }}
               />
               <span
-                className="w-1.5 h-1.5 rounded-full bg-[var(--text-muted)] animate-bounce"
+                className="w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-[#444444] animate-bounce"
                 style={{ animationDelay: "300ms" }}
               />
             </div>
-            <span className="text-[10px] font-mono text-[var(--text-muted)] mt-1 select-none px-1">
+            <span className="text-[10px] font-mono text-gray-400 dark:text-[#6B7280] mt-1 select-none px-1">
               typing...
             </span>
           </div>
@@ -225,13 +225,13 @@ export function ChatPanel({
       </div>
 
       {/* Suggested prompts row */}
-      <div className="px-4 py-2 border-t border-white/5 flex gap-2 overflow-x-auto scrollbar-none select-none bg-white/[0.01]">
+      <div className="px-4 py-2 border-t border-gray-200 dark:border-white/5 flex gap-2 overflow-x-auto scrollbar-none select-none bg-gray-50/50 dark:bg-white/[0.01]">
         {suggestedPrompts.map((prompt, index) => (
           <button
             key={index}
             onClick={() => !disabled && !loading && onSend?.(prompt)}
             disabled={disabled || loading}
-            className="flex-shrink-0 border border-white/10 bg-white/[0.02] hover:bg-white/5 rounded-full px-3.5 py-1.5 text-xs text-white/60 hover:text-white transition-all duration-200 whitespace-nowrap cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed focus-visible:ring-2 focus-visible:ring-purple-500/50 focus-visible:outline-none"
+            className="flex-shrink-0 border border-gray-300 dark:border-white/10 bg-transparent hover:bg-gray-100 dark:hover:bg-white/5 rounded-full px-3.5 py-1.5 text-xs text-gray-700 dark:text-white/60 hover:text-gray-900 dark:hover:text-white transition-all duration-200 whitespace-nowrap cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed focus-visible:ring-2 focus-visible:ring-purple-500/50 focus-visible:outline-none"
           >
             {prompt}
           </button>
@@ -239,7 +239,7 @@ export function ChatPanel({
       </div>
 
       {/* Input row */}
-      <div className="px-4 py-3 border-t border-white/5 flex flex-col gap-3">
+      <div className="px-4 py-3 border-t border-gray-200 dark:border-white/5 flex flex-col gap-3">
         <div className="flex items-center gap-3">
           <textarea
             value={input}
@@ -252,7 +252,7 @@ export function ChatPanel({
                 : "Ask a question about your videos…"
             }
             rows={1}
-            className="flex-1 bg-white/5 border-none rounded-2xl px-4 py-3 text-sm text-white placeholder:text-white/30 transition-all duration-200 resize-none overflow-hidden focus-visible:ring-2 focus-visible:ring-purple-500/50 focus-visible:outline-none"
+            className="flex-1 bg-white dark:bg-white/5 border border-gray-200 dark:border-none rounded-2xl px-4 py-3 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-white/30 transition-all duration-200 resize-none overflow-hidden focus-visible:ring-2 focus-visible:ring-purple-500/50 focus-visible:outline-none"
           />
           <button
             onClick={handleSend}
@@ -269,12 +269,12 @@ export function ChatPanel({
             type="button"
             onClick={() => onStreamToggle?.(!streamEnabled)}
             disabled={disabled}
-            className="flex items-center gap-2 text-[10px] uppercase font-mono text-white/40 hover:text-white/60 transition-colors duration-150 cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed select-none rounded p-0.5 focus-visible:ring-2 focus-visible:ring-purple-500/50 focus-visible:outline-none"
+            className="flex items-center gap-2 text-[10px] uppercase font-mono text-gray-500 dark:text-white/40 hover:text-gray-850 dark:hover:text-white/60 transition-colors duration-150 cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed select-none rounded p-0.5 focus-visible:ring-2 focus-visible:ring-purple-500/50 focus-visible:outline-none"
           >
             <span>Stream Responses</span>
             <div
               className={`w-8 h-4 rounded-full flex items-center p-0.5 transition-colors duration-200 ${
-                streamEnabled ? "bg-[#7C3AED]" : "bg-white/10"
+                streamEnabled ? "bg-[#7C3AED]" : "bg-gray-200 dark:bg-white/10"
               }`}
             >
               <div
@@ -285,7 +285,7 @@ export function ChatPanel({
             </div>
           </button>
 
-          <span className="text-[10px] font-mono text-white/40">
+          <span className="text-[10px] font-mono text-gray-400 dark:text-white/40">
             Enter to send
           </span>
         </div>

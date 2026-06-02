@@ -3,21 +3,21 @@
 @tailwind utilities;
 
 :root {
-  --bg: #0a0a0f;
-  --surface: #12121c;
-  --surface-raised: #181826;
-  --border: rgba(255, 255, 255, 0.08);
-  --border-subtle: rgba(255, 255, 255, 0.04);
-  --text-primary: #f5f5f5;
-  --text-secondary: #888888;
-  --text-muted: #444444;
-  --accent: #7C3AED;         /* purple — used sparingly */
+  --bg: #F5F5F7;
+  --surface: #ffffff;
+  --surface-raised: #f3f4f6;
+  --border: rgba(0, 0, 0, 0.08);
+  --border-subtle: rgba(0, 0, 0, 0.04);
+  --text-primary: #0A0A0F;
+  --text-secondary: #4b5563;
+  --text-muted: #6B7280;
+  --accent: #7C3AED;
   --accent-hover: #6D28D9;
   --green: #10B981;
   --red: #EF4444;
   --yellow: #F59E0B;
-  --video-a: #7C3AED;        /* purple for Video A */
-  --video-b: #06b6d4;        /* cyan for Video B */
+  --video-a: #7C3AED;
+  --video-b: #06b6d4;
 
   /* Compatibility variables for other components */
   --fg: var(--text-primary);
@@ -27,10 +27,30 @@
   --border-soft: var(--surface-raised);
   --accent-soft: rgba(124, 58, 237, 0.1);
   --accent-ring: rgba(124, 58, 237, 0.2);
+
+  --dot-purple: rgba(124, 58, 237, 0.04);
+  --dot-base: rgba(0, 0, 0, 0.03);
+  --progress-inactive: rgba(0, 0, 0, 0.1);
+}
+
+.dark {
+  --bg: #0a0a0f;
+  --surface: #12121c;
+  --surface-raised: #181826;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-subtle: rgba(255, 255, 255, 0.04);
+  --text-primary: #f5f5f5;
+  --text-secondary: #888888;
+  --text-muted: #444444;
+  --accent: #7C3AED;
+  --accent-hover: #6D28D9;
+  --dot-purple: rgba(124, 58, 237, 0.06);
+  --dot-base: rgba(255, 255, 255, 0.02);
+  --progress-inactive: rgba(255, 255, 255, 0.1);
 }
 
 html, body {
-  background: #0a0a0f;
+  background: var(--bg);
   color: var(--text-primary);
   min-height: 100vh;
   scroll-behavior: smooth;
@@ -41,8 +61,8 @@ body {
   font-feature-settings: "ss01", "ss02";
   -webkit-font-smoothing: antialiased;
   background-image: 
-    radial-gradient(rgba(124, 58, 237, 0.06) 1.2px, transparent 1.2px),
-    radial-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    radial-gradient(var(--dot-purple) 1.2px, transparent 1.2px),
+    radial-gradient(var(--dot-base) 1px, transparent 1px);
   background-size: 24px 24px;
   background-position: 0 0, 12px 12px;
 }
