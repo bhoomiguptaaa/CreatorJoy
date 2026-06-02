@@ -3,20 +3,20 @@
 @tailwind utilities;
 
 :root {
-  --bg: #0a0a0a;
-  --surface: #111111;
-  --surface-raised: #1a1a1a;
-  --border: #222222;
-  --border-subtle: #1a1a1a;
+  --bg: #0a0a0f;
+  --surface: #12121c;
+  --surface-raised: #181826;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-subtle: rgba(255, 255, 255, 0.04);
   --text-primary: #f5f5f5;
   --text-secondary: #888888;
   --text-muted: #444444;
-  --accent: #7c5cfc;         /* purple — used sparingly */
-  --accent-hover: #6b4ef0;
-  --green: #22c55e;
-  --red: #ef4444;
-  --yellow: #f59e0b;
-  --video-a: #7c5cfc;        /* purple for Video A */
+  --accent: #7C3AED;         /* purple — used sparingly */
+  --accent-hover: #6D28D9;
+  --green: #10B981;
+  --red: #EF4444;
+  --yellow: #F59E0B;
+  --video-a: #7C3AED;        /* purple for Video A */
   --video-b: #06b6d4;        /* cyan for Video B */
 
   /* Compatibility variables for other components */
@@ -25,12 +25,12 @@
   --muted: var(--text-secondary);
   --muted-light: var(--text-muted);
   --border-soft: var(--surface-raised);
-  --accent-soft: rgba(124, 92, 252, 0.1);
-  --accent-ring: rgba(124, 92, 252, 0.2);
+  --accent-soft: rgba(124, 58, 237, 0.1);
+  --accent-ring: rgba(124, 58, 237, 0.2);
 }
 
 html, body {
-  background: #0a0a0a;
+  background: #0a0a0f;
   color: var(--text-primary);
   min-height: 100vh;
   scroll-behavior: smooth;
@@ -40,6 +40,11 @@ body {
   position: relative;
   font-feature-settings: "ss01", "ss02";
   -webkit-font-smoothing: antialiased;
+  background-image: 
+    radial-gradient(rgba(124, 58, 237, 0.06) 1.2px, transparent 1.2px),
+    radial-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
 }
 
 /* Subtle CSS noise texture overlay using a pseudo-element on body::before */

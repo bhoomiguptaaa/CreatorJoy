@@ -210,24 +210,20 @@ export default function Home() {
       <div className="min-h-screen bg-[var(--bg)] flex flex-col">
         {/* Top Navbar */}
         <Navbar
-          analysesLeft={2}
           onNewAnalysis={handleNewAnalysis}
           onExport={() => alert("Report exported successfully!")}
         />
 
         {/* Main content grid */}
-        <main className="flex-1 flex gap-0 overflow-hidden">
+        <main className="flex-1 flex flex-col md:flex-row gap-0 overflow-hidden">
           
           {/* Left Column (Video Inputs + Comparison Metrics) */}
-          <aside className="w-[420px] flex-shrink-0 border-r border-[var(--border)] flex flex-col p-5 gap-4 overflow-y-auto bg-[var(--bg)] justify-between h-[calc(100vh-3.5rem)]">
+          <aside className="w-full md:w-[28%] md:min-w-[340px] md:max-w-[440px] flex-shrink-0 border-r border-[var(--border)] flex flex-col p-5 gap-4 overflow-y-auto bg-[#0a0a0f] justify-between h-auto md:h-[calc(100vh-3.5rem)]">
             <div className="space-y-4">
               {/* Header Label */}
               <div>
-                <div className="text-xs font-semibold uppercase tracking-widest text-[var(--text-primary)] font-mono">
-                  Video Inputs
-                </div>
-                <div className="text-[10px] text-[var(--text-secondary)] font-mono">
-                  Paste two URLs to begin comparison
+                <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--text-muted)] font-mono">
+                  VIDEO INPUTS
                 </div>
               </div>
 
@@ -289,7 +285,7 @@ export default function Home() {
           </aside>
 
           {/* Right Column (Empty State OR Active Chat Panel) */}
-          <section className="flex-1 flex flex-col p-5 bg-[var(--surface-raised)]/20 h-[calc(100vh-3.5rem)]">
+          <section className="flex-1 flex flex-col p-5 bg-[#0d0d14]/40 h-auto md:h-[calc(100vh-3.5rem)]">
             {!hasVideos ? (
               <div className="flex-1 flex flex-col items-center justify-center border border-[var(--border)] border-dashed rounded-xl p-8 bg-[var(--surface)]/30">
                 <EmptyState />

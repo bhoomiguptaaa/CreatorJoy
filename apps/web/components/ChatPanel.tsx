@@ -111,16 +111,13 @@ export function ChatPanel({
         return <span key={index}>{part.content}</span>;
       }
 
-      const isVideoA = part.video === "A";
-      const colorClass = isVideoA
-        ? "bg-[var(--video-a)]/10 text-[var(--video-a)] border-[var(--video-a)]/20 hover:bg-[var(--video-a)]/20"
-        : "bg-[var(--video-b)]/10 text-[var(--video-b)] border-[var(--video-b)]/20 hover:bg-[var(--video-b)]/20";
+      const colorClass = "bg-purple-950/40 text-purple-300 border-purple-800/30 hover:bg-purple-900/40 hover:text-purple-200 transition-colors duration-150";
 
       return (
         <button
           key={index}
           onClick={() => onCitationClick?.(part.video!, part.seconds!)}
-          className={`inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-xs font-mono border transition-colors duration-150 cursor-pointer focus-visible:ring-2 focus-visible:ring-[var(--accent)]/50 focus-visible:outline-none ${colorClass}`}
+          className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-mono border cursor-pointer focus-visible:ring-2 focus-visible:ring-purple-500/50 focus-visible:outline-none ${colorClass}`}
         >
           {part.label}
         </button>
@@ -135,11 +132,11 @@ export function ChatPanel({
   ];
 
   return (
-    <div className="flex flex-col h-full bg-[var(--surface)] border border-[var(--border)] rounded-xl overflow-hidden">
+    <div className="flex flex-col h-full bg-[#13131F]/40 backdrop-blur-md border border-white/5 rounded-2xl overflow-hidden">
       {/* Header bar */}
-      <div className="px-4 py-3 border-b border-[var(--border)] flex items-center justify-between select-none">
+      <div className="px-4 py-4 border-b border-white/5 flex items-center justify-between select-none">
         <div className="flex items-center gap-2">
-          <span className="text-sm font-medium text-[var(--text-primary)]">
+          <span className="text-sm font-medium text-white/90">
             AI Analysis Chat
           </span>
           <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
@@ -147,7 +144,7 @@ export function ChatPanel({
         <button
           onClick={onClear}
           disabled={messages.length === 0}
-          className="text-xs text-[var(--text-muted)] hover:text-[var(--text-primary)] disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-colors duration-150 rounded px-1 focus-visible:ring-2 focus-visible:ring-[var(--accent)]/50 focus-visible:outline-none"
+          className="text-xs text-white/40 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer transition-colors duration-150 rounded px-1.5 py-0.5 focus-visible:ring-2 focus-visible:ring-purple-500/50 focus-visible:outline-none"
         >
           Clear Chat
         </button>
@@ -159,14 +156,18 @@ export function ChatPanel({
         className="flex-1 overflow-y-auto px-4 py-4 flex flex-col gap-4 scrollbar-thin scrollbar-thumb-[var(--border)] scrollbar-track-transparent"
       >
         {messages.length === 0 && !loading && (
-          <div className="flex-1 flex flex-col items-center justify-center text-center p-8 select-none">
-            <div className="text-3xl mb-3">✨</div>
-            <p className="text-sm text-[var(--text-primary)] font-medium mb-1">
-              Start your analysis
-            </p>
-            <p className="text-xs text-[var(--text-secondary)] max-w-[240px]">
-              Ask questions about views, retention hooks, or comparison metrics.
-            </p>
+          <div className="flex-1 flex flex-col items-center justify-center text-center p-8 select-none gap-3">
+            <span className="text-5xl bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-400 bg-clip-text text-transparent animate-pulse select-none font-bold">
+              ✦
+            </span>
+            <div>
+              <p className="text-sm text-white font-medium mb-1">
+                Start your analysis
+              </p>
+              <p className="text-xs text-white/50 max-w-[250px] leading-relaxed">
+                Ask questions about views, retention hooks, or comparison metrics.
+              </p>
+            </div>
           </div>
         )}
 
@@ -180,8 +181,8 @@ export function ChatPanel({
               <div
                 className={
                   isUser
-                    ? "ml-auto max-w-[80%] bg-[var(--accent)] text-white rounded-2xl rounded-tr-sm px-4 py-2.5 text-sm"
-                    : "mr-auto max-w-[90%] bg-[var(--surface-raised)] border border-[var(--border)] rounded-2xl rounded-tl-sm px-4 py-3 text-sm text-[var(--text-primary)] leading-relaxed"
+                    ? "ml-auto max-w-[80%] bg-[#7C3AED] text-white rounded-2xl rounded-tr-sm px-4 py-2.5 text-sm shadow-lg shadow-purple-900/10"
+                    : "mr-auto max-w-[90%] bg-[#13131F] border border-white/5 rounded-2xl rounded-tl-sm px-4 py-3 text-sm text-white/90 leading-relaxed"
                 }
               >
                 {isUser ? (
@@ -224,13 +225,13 @@ export function ChatPanel({
       </div>
 
       {/* Suggested prompts row */}
-      <div className="px-4 py-2 border-t border-[var(--border)] flex gap-2 overflow-x-auto scrollbar-none select-none bg-[var(--bg)]/30">
+      <div className="px-4 py-2 border-t border-white/5 flex gap-2 overflow-x-auto scrollbar-none select-none bg-white/[0.01]">
         {suggestedPrompts.map((prompt, index) => (
           <button
             key={index}
             onClick={() => !disabled && !loading && onSend?.(prompt)}
             disabled={disabled || loading}
-            className="flex-shrink-0 border border-[var(--border)] rounded-full px-3 py-1.5 text-xs text-[var(--text-secondary)] hover:border-[var(--accent)]/50 hover:text-[var(--text-primary)] transition-colors duration-150 whitespace-nowrap cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed focus-visible:ring-2 focus-visible:ring-[var(--accent)]/50 focus-visible:outline-none"
+            className="flex-shrink-0 border border-white/10 bg-white/[0.02] hover:bg-white/5 rounded-full px-3.5 py-1.5 text-xs text-white/60 hover:text-white transition-all duration-200 whitespace-nowrap cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed focus-visible:ring-2 focus-visible:ring-purple-500/50 focus-visible:outline-none"
           >
             {prompt}
           </button>
@@ -238,7 +239,7 @@ export function ChatPanel({
       </div>
 
       {/* Input row */}
-      <div className="px-4 py-3 border-t border-[var(--border)] flex flex-col gap-2">
+      <div className="px-4 py-3 border-t border-white/5 flex flex-col gap-3">
         <div className="flex items-center gap-3">
           <textarea
             value={input}
@@ -251,12 +252,12 @@ export function ChatPanel({
                 : "Ask a question about your videos…"
             }
             rows={1}
-            className="flex-1 bg-[var(--surface-raised)] border border-[var(--border)] rounded-xl px-4 py-2.5 text-sm text-[var(--text-primary)] placeholder:text-[var(--text-muted)] transition-colors duration-150 resize-none overflow-hidden focus-visible:ring-2 focus-visible:ring-[var(--accent)]/50 focus-visible:outline-none focus:border-[var(--accent)]/50"
+            className="flex-1 bg-white/5 border-none rounded-2xl px-4 py-3 text-sm text-white placeholder:text-white/30 transition-all duration-200 resize-none overflow-hidden focus-visible:ring-2 focus-visible:ring-purple-500/50 focus-visible:outline-none"
           />
           <button
             onClick={handleSend}
             disabled={disabled || !input.trim() || loading}
-            className="w-9 h-9 flex-shrink-0 rounded-xl bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white flex items-center justify-center transition-colors duration-150 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer focus-visible:ring-2 focus-visible:ring-[var(--accent)]/50 focus-visible:outline-none"
+            className="w-10 h-10 flex-shrink-0 rounded-full bg-[#7C3AED] hover:bg-[#6D28D9] text-white flex items-center justify-center transition-all duration-200 active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer focus-visible:ring-2 focus-visible:ring-purple-500/50 focus-visible:outline-none shadow-md shadow-purple-900/30"
           >
             <Send className="w-4 h-4" />
           </button>
@@ -268,12 +269,12 @@ export function ChatPanel({
             type="button"
             onClick={() => onStreamToggle?.(!streamEnabled)}
             disabled={disabled}
-            className="flex items-center gap-2 text-[10px] uppercase font-mono text-[var(--text-muted)] cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed select-none rounded p-0.5 focus-visible:ring-2 focus-visible:ring-[var(--accent)]/50 focus-visible:outline-none"
+            className="flex items-center gap-2 text-[10px] uppercase font-mono text-white/40 hover:text-white/60 transition-colors duration-150 cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed select-none rounded p-0.5 focus-visible:ring-2 focus-visible:ring-purple-500/50 focus-visible:outline-none"
           >
             <span>Stream Responses</span>
             <div
               className={`w-8 h-4 rounded-full flex items-center p-0.5 transition-colors duration-200 ${
-                streamEnabled ? "bg-[var(--accent)]" : "bg-[var(--border)]"
+                streamEnabled ? "bg-[#7C3AED]" : "bg-white/10"
               }`}
             >
               <div
@@ -284,7 +285,7 @@ export function ChatPanel({
             </div>
           </button>
 
-          <span className="text-[10px] font-mono text-[var(--text-muted)]">
+          <span className="text-[10px] font-mono text-white/40">
             Enter to send
           </span>
         </div>

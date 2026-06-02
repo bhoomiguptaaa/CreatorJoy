@@ -18,11 +18,11 @@ export function AnalyzeButton({
   let buttonClasses = "w-full h-12 rounded-xl font-medium text-sm flex items-center justify-center gap-2 transition-all duration-200 focus-visible:ring-2 focus-visible:ring-[var(--accent)]/50 focus-visible:outline-none ";
 
   if (loading) {
-    buttonClasses += "bg-[var(--accent)] text-white cursor-not-allowed opacity-80";
+    buttonClasses += "bg-gradient-to-r from-purple-600 to-indigo-600 text-white cursor-not-allowed opacity-80";
   } else if (disabled) {
-    buttonClasses += "bg-[var(--surface-raised)] border border-[var(--border)] text-[var(--text-muted)] cursor-not-allowed opacity-40";
+    buttonClasses += "bg-white/5 border border-white/10 text-white/30 cursor-not-allowed";
   } else {
-    buttonClasses += "bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white cursor-pointer active:scale-[0.98]";
+    buttonClasses += "bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-semibold cursor-pointer active:scale-[0.98] border border-purple-500/20";
   }
 
   return (

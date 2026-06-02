@@ -35,8 +35,8 @@ export function MetricsTable({ videoA, videoB }: MetricsTableProps) {
   };
 
   const getDeltaColor = (valA: number, valB: number) => {
-    if (valB > valA) return "text-[var(--green)]";
-    if (valB < valA) return "text-[var(--red)]";
+    if (valB > valA) return "text-emerald-500";
+    if (valB < valA) return "text-rose-500";
     return "text-[var(--text-muted)]";
   };
 
@@ -45,6 +45,7 @@ export function MetricsTable({ videoA, videoB }: MetricsTableProps) {
     icon: React.ReactNode,
     valA: number,
     valB: number,
+    rowIndex: number,
     isRate: boolean = false
   ) => {
     // Calculate proportional bar widths
@@ -57,35 +58,37 @@ export function MetricsTable({ videoA, videoB }: MetricsTableProps) {
     const delta = calculateDelta(valA, valB);
     const deltaColor = getDeltaColor(valA, valB);
 
+    const rowBg = rowIndex % 2 !== 0 ? "bg-white/[0.02]" : "bg-transparent";
+
     return (
-      <div className="grid grid-cols-[1fr_100px_100px_80px] px-4 py-3 border-b border-[var(--border)]/50 last:border-0 hover:bg-[var(--surface-raised)] transition-colors duration-150 items-center">
+      <div className={`grid grid-cols-[1fr_100px_100px_80px] px-4 py-3 border-b border-[var(--border)]/50 last:border-0 hover:bg-white/[0.04] transition-colors duration-150 items-center ${rowBg}`}>
         {/* Metric Name */}
         <div className="flex items-center gap-2 text-sm text-[var(--text-secondary)]">
           {icon}
           <span>{label}</span>
         </div>
 
-        {/* Video A Value + Proportional Bar */}
+        {/* Video A Value + Proportional Bar (Purple) */}
         <div className="pr-4">
           <div className="text-sm font-mono font-medium text-[var(--text-primary)]">
             {formattedA}
           </div>
-          <div className="w-full bg-[var(--border-subtle)] h-0.5 rounded-full mt-1 overflow-hidden">
+          <div className="w-full bg-white/[0.03] h-0.5 rounded-full mt-1 overflow-hidden">
             <div
-              className="bg-[var(--video-a)] h-full rounded-full transition-all duration-500"
+              className="bg-[#7C3AED] h-full rounded-full transition-all duration-500"
               style={{ width: widthA }}
             />
           </div>
         </div>
 
-        {/* Video B Value + Proportional Bar */}
+        {/* Video B Value + Proportional Bar (Cyan) */}
         <div className="pr-4">
           <div className="text-sm font-mono font-medium text-[var(--text-primary)]">
             {formattedB}
           </div>
-          <div className="w-full bg-[var(--border-subtle)] h-0.5 rounded-full mt-1 overflow-hidden">
+          <div className="w-full bg-white/[0.03] h-0.5 rounded-full mt-1 overflow-hidden">
             <div
-              className="bg-[var(--video-b)] h-full rounded-full transition-all duration-500"
+              className="bg-[#06b6d4] h-full rounded-full transition-all duration-500"
               style={{ width: widthB }}
             />
           </div>
@@ -105,21 +108,21 @@ export function MetricsTable({ videoA, videoB }: MetricsTableProps) {
       <div className="grid grid-cols-[1fr_100px_100px_80px] px-4 py-2.5 border-b border-[var(--border)] text-xs font-mono uppercase tracking-widest text-[var(--text-muted)] items-center">
         <div>Metric</div>
         <div className="flex items-center gap-1.5">
-          <span className="w-2 h-2 rounded-full bg-[var(--video-a)]" />
+          <span className="w-2 h-2 rounded-full bg-[#7C3AED]" />
           Video A
         </div>
         <div className="flex items-center gap-1.5">
-          <span className="w-2 h-2 rounded-full bg-[var(--video-b)]" />
+          <span className="w-2 h-2 rounded-full bg-[#06b6d4]" />
           Video B
         </div>
         <div>Delta</div>
       </div>
 
       {/* Rows */}
-      {renderRow("Views", <Eye className="w-4 h-4 text-[var(--text-muted)]" />, videoA.views, videoB.views)}
-      {renderRow("Likes", <ThumbsUp className="w-4 h-4 text-[var(--text-muted)]" />, videoA.likes, videoB.likes)}
-      {renderRow("Comments", <MessageCircle className="w-4 h-4 text-[var(--text-muted)]" />, videoA.comments, videoB.comments)}
-      {renderRow("Engagement Rate", <TrendingUp className="w-4 h-4 text-[var(--text-muted)]" />, videoA.engagementRate, videoB.engagementRate, true)}
+      {renderRow("Views", <Eye className="w-4 h-4 text-[var(--text-muted)]" />, videoA.views, videoB.views, 0)}
+      {renderRow("Likes", <ThumbsUp className="w-4 h-4 text-[var(--text-muted)]" />, videoA.likes, videoB.likes, 1)}
+      {renderRow("Comments", <MessageCircle className="w-4 h-4 text-[var(--text-muted)]" />, videoA.comments, videoB.comments, 2)}
+      {renderRow("Engagement Rate", <TrendingUp className="w-4 h-4 text-[var(--text-muted)]" />, videoA.engagementRate, videoB.engagementRate, 3, true)}
     </div>
   );
 }
