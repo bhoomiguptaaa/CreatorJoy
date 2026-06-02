@@ -1,6 +1,6 @@
 # CreatorJoy RAG
 
-**Paste two YouTube URLs. Ask why one outperformed the other.**
+>**Paste two YouTube URLs. Ask why one outperformed the other.**
 
 A full-stack RAG system that ingests YouTube videos, indexes their transcripts with timestamp-aware chunks, and lets creators chat about hooks, engagement, and performance — with streaming responses, inline timestamp citations, and conversation memory across turns.
 
