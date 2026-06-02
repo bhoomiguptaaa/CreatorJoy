@@ -275,6 +275,4 @@ Same interface. Same DB writes. Same caller. Behind a per-tenant feature flag, t
 
 ---
 
-## License
 
-MIT
