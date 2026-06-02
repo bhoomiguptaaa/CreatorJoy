@@ -1,0 +1,70 @@
+[tool.poetry]
+name = "creatorjoy-api"
+version = "0.1.0"
+description = "Creatorjoy RAG backend — ingestion, retrieval routing, streaming chat."
+authors = ["Yash <yashvardhanmalik954@gmail.com>"]
+readme = "../../README.md"
+packages = [{ include = "app" }]
+
+[tool.poetry.dependencies]
+# 3.13+ doesn't yet have prebuilt wheels for tiktoken / asyncpg.
+# Constrain to 3.11–3.12 so installs don't try to compile from source.
+python = ">=3.11,<3.13"
+
+# Web framework
+fastapi = "^0.115.0"
+uvicorn = { extras = ["standard"], version = "^0.32.0" }
+sse-starlette = "^2.1.3"
+
+# Config
+pydantic = "^2.9.0"
+pydantic-settings = "^2.5.0"
+python-dotenv = "^1.0.1"
+
+# Database
+asyncpg = "^0.29.0"
+psycopg = { extras = ["binary", "pool"], version = "^3.2.0" }
+pgvector = "^0.3.6"
+
+# Video ingestion. Pinned wide because YouTube ships anti-bot updates every
+# few weeks and yt-dlp ships counters — we always want the freshest release.
+yt-dlp = ">=2025.1.0"
+youtube-transcript-api = "^0.6.2"
+
+# ML / Embeddings — fastembed uses ONNX Runtime (no torch), ~80 MB vs ~450 MB
+fastembed = "^0.4.0"
+
+# LLM orchestration
+langgraph = "^0.2.50"
+langgraph-checkpoint-postgres = "^2.0.0"
+langchain-core = "^0.3.0"
+groq = "^0.13.0"
+
+# Utilities
+httpx = "^0.27.0"
+tiktoken = "^0.8.0"
+tenacity = "^9.0.0"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.7.0"
+mypy = "^1.13.0"
+pytest = "^8.3.0"
+pytest-asyncio = "^0.24.0"
+
+[build-system]
+requires = ["poetry-core>=1.8.0"]
+build-backend = "poetry.core.masonry.api"
+
+# ─── Tooling ────────────────────────────────────────────────────────────
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "A", "C4", "RET", "SIM"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

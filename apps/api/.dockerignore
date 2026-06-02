@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+
+# Env / secrets (never bake these into the image)
+.env
+.env.*
+!.env.example
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Dev tooling
+.git/
+.gitignore
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
+tests/
+
+# Editor
+.vscode/
+.idea/
+
+# Misc
+*.md
